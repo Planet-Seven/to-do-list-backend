@@ -1,6 +1,6 @@
 # BI-TJV-svobov25-semestralni-prace
 
-## Client 
+## Client
 
 todo
 
