@@ -9,5 +9,4 @@ public class BiTjvSvobov25SemestralniPraceApplication {
     public static void main(String[] args) {
         SpringApplication.run(BiTjvSvobov25SemestralniPraceApplication.class, args);
     }
-
 }
