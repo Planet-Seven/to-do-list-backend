@@ -1,12 +1,9 @@
 package fit.bitjv.bitjvsvobov25semestralniprace.business;
 
 import fit.bitjv.bitjvsvobov25semestralniprace.dto.CreateTagRequest;
-import fit.bitjv.bitjvsvobov25semestralniprace.dto.CreateTaskRequest;
 import fit.bitjv.bitjvsvobov25semestralniprace.dto.TagResponse;
-import fit.bitjv.bitjvsvobov25semestralniprace.dto.TaskResponse;
 import fit.bitjv.bitjvsvobov25semestralniprace.entity.Tag;
 import fit.bitjv.bitjvsvobov25semestralniprace.repository.TagRepository;
-import fit.bitjv.bitjvsvobov25semestralniprace.repository.TaskRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 

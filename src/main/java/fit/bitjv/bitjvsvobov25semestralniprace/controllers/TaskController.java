@@ -3,7 +3,6 @@ package fit.bitjv.bitjvsvobov25semestralniprace.controllers;
 import fit.bitjv.bitjvsvobov25semestralniprace.business.TaskService;
 import fit.bitjv.bitjvsvobov25semestralniprace.dto.CreateTaskRequest;
 import fit.bitjv.bitjvsvobov25semestralniprace.dto.TaskResponse;
-import fit.bitjv.bitjvsvobov25semestralniprace.repository.TaskRepository;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

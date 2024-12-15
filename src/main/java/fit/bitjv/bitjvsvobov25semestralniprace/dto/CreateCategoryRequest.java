@@ -1,6 +1,5 @@
 package fit.bitjv.bitjvsvobov25semestralniprace.dto;
 
-import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.Setter;
 
