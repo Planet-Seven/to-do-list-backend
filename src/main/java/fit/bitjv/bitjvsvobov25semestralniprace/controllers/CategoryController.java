@@ -3,9 +3,10 @@ package fit.bitjv.bitjvsvobov25semestralniprace.controllers;
 import fit.bitjv.bitjvsvobov25semestralniprace.business.CategoryService;
 import fit.bitjv.bitjvsvobov25semestralniprace.dto.CategoryResponse;
 import fit.bitjv.bitjvsvobov25semestralniprace.dto.CreateCategoryRequest;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import fit.bitjv.bitjvsvobov25semestralniprace.dto.UpdateCategoryRequest;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("categories")
@@ -17,7 +18,27 @@ public class CategoryController {
     }
 
     @PostMapping
-    public CategoryResponse createTask(CreateCategoryRequest request){
+    public CategoryResponse createCategory(CreateCategoryRequest request){
         return categoryService.createCategory(request);
+    }
+
+    @PutMapping
+    public CategoryResponse updateCategory(UpdateCategoryRequest request) {
+        return categoryService.updateCategory(request);
+    }
+
+    @GetMapping
+    public List<CategoryResponse> getAllCategories(){
+        return categoryService.getAllCategories();
+    }
+
+    @GetMapping("/{categoryId}")
+    public CategoryResponse getCategoryById(@PathVariable Long categoryId){
+        return categoryService.getCategoryById(categoryId);
+    }
+
+    @DeleteMapping("/{categoryId}")
+    public void deleteCategory(@PathVariable Long categoryId) {
+        categoryService.deleteCategory(categoryId);
     }
 }

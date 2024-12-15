@@ -17,7 +17,7 @@ public class TagController {
     }
 
     @PostMapping
-    public TagResponse createTask(CreateTagRequest request){
+    public TagResponse createTag(CreateTagRequest request){
         return tagService.createTag(request);
     }
 }
