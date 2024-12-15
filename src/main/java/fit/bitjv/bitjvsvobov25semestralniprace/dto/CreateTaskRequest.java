@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
-import java.util.Set;
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,5 +12,5 @@ public class CreateTaskRequest {
     private String name;
     private Instant deadline;
     private Long categoryId;
-    //private Set<Long> tagsIds;
+    private List<Long> tagIds;
 }

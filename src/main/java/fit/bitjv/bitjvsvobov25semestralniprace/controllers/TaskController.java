@@ -37,6 +37,11 @@ public class TaskController {
         return taskService.getTaskById(taskId);
     }
 
+    @GetMapping("/missed")
+    public List<TaskResponse> getMissedTasks(){
+        return taskService.getMissedTasks();
+    }
+
     @DeleteMapping("/{taskId}")
     public void deleteTask(@PathVariable Long taskId){
         taskService.deleteTaskById(taskId);
