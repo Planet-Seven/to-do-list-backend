@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -14,5 +14,5 @@ public class TaskResponse {
     private Instant deadline;
     private Boolean isDone = false;
     private CategoryResponse category;
-    private List<TagResponse> tags;
+    private Set<TagResponse> tags;
 }
