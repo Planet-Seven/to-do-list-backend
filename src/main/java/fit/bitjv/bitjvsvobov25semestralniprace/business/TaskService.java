@@ -5,6 +5,7 @@ import fit.bitjv.bitjvsvobov25semestralniprace.dto.TaskResponse;
 import fit.bitjv.bitjvsvobov25semestralniprace.dto.UpdateTaskRequest;
 import fit.bitjv.bitjvsvobov25semestralniprace.entity.Tag;
 import fit.bitjv.bitjvsvobov25semestralniprace.entity.Task;
+import fit.bitjv.bitjvsvobov25semestralniprace.exceptions.CategoryNotFound;
 import fit.bitjv.bitjvsvobov25semestralniprace.exceptions.TagNotFound;
 import fit.bitjv.bitjvsvobov25semestralniprace.exceptions.TaskNotFound;
 import fit.bitjv.bitjvsvobov25semestralniprace.repository.CategoryRepository;
@@ -39,6 +40,9 @@ public class TaskService {
 
     public TaskResponse createTask(CreateTaskRequest request) {
         Task task = mapper.map(request, Task.class);
+        task.setCategory(categoryRepository
+                .findById(request.getCategoryId())
+                .orElseThrow(() -> new CategoryNotFound("")));
 
         Set<Tag> tags = new HashSet<>();
         for (Long id : request.getTagIds())
@@ -51,6 +55,9 @@ public class TaskService {
 
     public TaskResponse updateTask(UpdateTaskRequest request) {
         Task task = mapper.map(request, Task.class);
+        task.setCategory(categoryRepository
+                .findById(request.getCategoryId())
+                .orElseThrow(() -> new CategoryNotFound("")));
 
         Set<Tag> tags = new HashSet<>();
         for (Long id : request.getTagIds())
@@ -60,6 +67,7 @@ public class TaskService {
         taskRepository
                 .findById(request.getTaskId())
                 .orElseThrow(() -> new TaskNotFound(""));
+
         taskRepository.save(task);
         return mapper.map(task, TaskResponse.class);
     }

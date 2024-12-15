@@ -5,18 +5,17 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
-import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
 @Setter
 @Getter
-@Table(name="Task")
+@Table(name="task")
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name="id", nullable = false)
+    @Column(name="task_id", nullable = false)
     private Long taskId;
 
     @Column(name="name", nullable = false)
@@ -28,13 +27,13 @@ public class Task {
     @Column(name="is_done", nullable = false)
     private boolean isDone;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH}, optional = false)
+    @ManyToOne(cascade = {CascadeType.DETACH}, optional = false)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
+    @ManyToMany(cascade = {CascadeType.DETACH})
     @JoinTable(name = "Task_tags",
-            joinColumns = @JoinColumn(name = "task_id"),
-            inverseJoinColumns = @JoinColumn(name = "tags_id"))
+            joinColumns = @JoinColumn(name = "task_task_id"),
+            inverseJoinColumns = @JoinColumn(name = "tags_tag_id"))
     private Set<Tag> tags = new LinkedHashSet<>();
 }

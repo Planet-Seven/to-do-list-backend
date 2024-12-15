@@ -11,11 +11,11 @@ import java.util.Objects;
 @Entity
 @Setter
 @Getter
-@Table(name="Tag")
+@Table(name="tag")
 public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name="id", nullable = false)
+    @Column(name="tag_id", nullable = false)
     private Long tagId;
 
     @Column(name="name", nullable = false)

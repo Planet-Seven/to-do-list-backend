@@ -18,12 +18,12 @@ public class TaskController {
     }
 
     @PostMapping
-    public TaskResponse createTask(CreateTaskRequest request){
+    public TaskResponse createTask(@RequestBody CreateTaskRequest request){
         return taskService.createTask(request);
     }
 
     @PutMapping
-    public TaskResponse updateTask(UpdateTaskRequest request){
+    public TaskResponse updateTask(@RequestBody UpdateTaskRequest request){
         return taskService.updateTask(request);
     }
 
