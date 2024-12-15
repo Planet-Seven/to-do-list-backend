@@ -6,6 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UpdateTagRequest {
-    private long id;
+    private long tagId;
     private String name;
 }

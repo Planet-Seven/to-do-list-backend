@@ -31,7 +31,7 @@ public class CategoryService {
     public CategoryResponse updateCategory(UpdateCategoryRequest request) {
         Category category = mapper.map(request, Category.class);
         categoryRepository
-                .findById(request.getId())
+                .findById(request.getCategoryId())
                 .orElseThrow(() ->new CategoryNotFound(""));
         categoryRepository.save(category);
         return mapper.map(category, CategoryResponse.class);

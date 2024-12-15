@@ -9,10 +9,10 @@ import java.util.Set;
 @Getter
 @Setter
 public class TaskResponse {
-    private Long id;
+    private Long taskId;
     private String name;
     private Instant deadline;
     private boolean isDone = false;
     private Long categoryId;
-   // private Set<Long> tagsIds;
+    private Set<Long> tagsIds;
 }

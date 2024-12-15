@@ -32,7 +32,7 @@ public class TaskService {
     public TaskResponse updateTask(UpdateTaskRequest request) {
         Task task = mapper.map(request, Task.class);
         taskRepository
-                .findById(request.getId())
+                .findById(request.getTaskId())
                 .orElseThrow(() -> new TaskNotFound(""));
         taskRepository.save(task);
         return mapper.map(task, TaskResponse.class);

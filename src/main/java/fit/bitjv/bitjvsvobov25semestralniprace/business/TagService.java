@@ -33,7 +33,7 @@ public class TagService {
     public TagResponse updateTag(UpdateTagRequest request) {
         Tag tag = mapper.map(request, Tag.class);
         tagRepository
-                .findById(request.getId())
+                .findById(request.getTagId())
                 .orElseThrow(() ->new TagNotFound(""));
         tagRepository.save(tag);
         return mapper.map(tag, TagResponse.class);

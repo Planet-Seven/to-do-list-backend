@@ -4,13 +4,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.Set;
 
 @Getter
 @Setter
 public class UpdateTaskRequest {
-    private long id;
+    private Long taskId;
     private String name;
     private Instant deadline;
     private Long categoryId;
+    private Boolean isDone;
     //private Set<Long> tagsIds;
 }

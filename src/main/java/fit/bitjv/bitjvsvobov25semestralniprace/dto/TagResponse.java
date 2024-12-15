@@ -6,6 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TagResponse {
-    private Long id;
+    private Long tagId;
     private String name;
 }
