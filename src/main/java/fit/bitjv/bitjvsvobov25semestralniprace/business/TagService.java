@@ -31,10 +31,10 @@ public class TagService {
     }
 
     public TagResponse updateTag(UpdateTagRequest request) {
-        Tag tag = tagRepository
+        Tag tag = mapper.map(request, Tag.class);
+        tagRepository
                 .findById(request.getId())
                 .orElseThrow(() ->new TagNotFound(""));
-        tag.setName(request.getName());
         tagRepository.save(tag);
         return mapper.map(tag, TagResponse.class);
     }

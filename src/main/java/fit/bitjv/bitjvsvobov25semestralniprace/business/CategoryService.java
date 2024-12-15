@@ -29,10 +29,10 @@ public class CategoryService {
     }
 
     public CategoryResponse updateCategory(UpdateCategoryRequest request) {
-        Category category = categoryRepository
+        Category category = mapper.map(request, Category.class);
+        categoryRepository
                 .findById(request.getId())
                 .orElseThrow(() ->new CategoryNotFound(""));
-        category.setName(request.getName());
         categoryRepository.save(category);
         return mapper.map(category, CategoryResponse.class);
     }
