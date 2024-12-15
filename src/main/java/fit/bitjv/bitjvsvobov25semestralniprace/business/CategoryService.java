@@ -45,7 +45,8 @@ public class CategoryService {
     }
 
     public CategoryResponse getCategoryById(Long id) {
-        Category category = categoryRepository.findById(id)
+        Category category = categoryRepository
+                .findById(id)
                 .orElseThrow(() ->new CategoryNotFound(""));
         return mapper.map(category, CategoryResponse.class);
     }
