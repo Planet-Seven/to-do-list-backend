@@ -18,7 +18,4 @@ public class Tag {
 
     @Column(name="name", nullable = false)
     private String name;
-
-    @Column(name="color", nullable = false)
-    private Color color;
 }
