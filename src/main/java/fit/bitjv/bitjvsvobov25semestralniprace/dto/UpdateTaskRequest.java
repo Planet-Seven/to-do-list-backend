@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.Date;
 import java.util.Set;
 
 @Getter
@@ -16,7 +17,7 @@ import java.util.Set;
 public class UpdateTaskRequest {
     private Long taskId;
     private String name;
-    private Instant deadline;
+    private Date deadline;
     private Long categoryId;
     private Boolean isDone;
     private Set<Long> tagIds;

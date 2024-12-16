@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -22,7 +23,7 @@ public class Task {
     private String name;
 
     @Column(name="deadline")
-    private Instant deadline;
+    private Date deadline;
 
     @Column(name="is_done", nullable = false)
     private boolean isDone;
