@@ -13,7 +13,7 @@ public class TaskResponse {
     private Long taskId;
     private String name;
     private Date deadline;
-    private Boolean isDone = false;
+    private boolean isDone;
     private CategoryResponse category;
     private Set<TagResponse> tags;
 }

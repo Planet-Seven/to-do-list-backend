@@ -11,7 +11,7 @@ import java.util.Set;
 public class TaskRequest {
     private String name;
     private Date deadline;
-    private Boolean isDone = false;
+    private boolean isDone;
     private Long categoryId;
     private Set<Long> tagIds;
 }
