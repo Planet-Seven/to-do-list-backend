@@ -1,9 +1,8 @@
 package fit.bitjv.bitjvsvobov25semestralniprace.controllers;
 
 import fit.bitjv.bitjvsvobov25semestralniprace.business.TaskService;
-import fit.bitjv.bitjvsvobov25semestralniprace.dto.CreateTaskRequest;
+import fit.bitjv.bitjvsvobov25semestralniprace.dto.TaskRequest;
 import fit.bitjv.bitjvsvobov25semestralniprace.dto.TaskResponse;
-import fit.bitjv.bitjvsvobov25semestralniprace.dto.UpdateTaskRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,13 +17,13 @@ public class TaskController {
     }
 
     @PostMapping
-    public TaskResponse createTask(@RequestBody CreateTaskRequest request){
+    public TaskResponse createTask(@RequestBody TaskRequest request){
         return taskService.createTask(request);
     }
 
-    @PutMapping
-    public TaskResponse updateTask(@RequestBody UpdateTaskRequest request){
-        return taskService.updateTask(request);
+    @PutMapping("/{taskId}")
+    public TaskResponse updateTask(@RequestBody TaskRequest request, @PathVariable Long taskId){
+        return taskService.updateTask(request, taskId);
     }
 
     @GetMapping

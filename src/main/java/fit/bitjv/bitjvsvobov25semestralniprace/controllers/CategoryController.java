@@ -2,8 +2,7 @@ package fit.bitjv.bitjvsvobov25semestralniprace.controllers;
 
 import fit.bitjv.bitjvsvobov25semestralniprace.business.CategoryService;
 import fit.bitjv.bitjvsvobov25semestralniprace.dto.CategoryResponse;
-import fit.bitjv.bitjvsvobov25semestralniprace.dto.CreateCategoryRequest;
-import fit.bitjv.bitjvsvobov25semestralniprace.dto.UpdateCategoryRequest;
+import fit.bitjv.bitjvsvobov25semestralniprace.dto.CategoryRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,13 +17,13 @@ public class CategoryController {
     }
 
     @PostMapping
-    public CategoryResponse createCategory(CreateCategoryRequest request){
+    public CategoryResponse createCategory(CategoryRequest request){
         return categoryService.createCategory(request);
     }
 
-    @PutMapping
-    public CategoryResponse updateCategory(UpdateCategoryRequest request) {
-        return categoryService.updateCategory(request);
+    @PutMapping("/{categoryId}")
+    public CategoryResponse updateCategory(CategoryRequest request, @PathVariable Long categoryId) {
+        return categoryService.updateCategory(request, categoryId);
     }
 
     @GetMapping

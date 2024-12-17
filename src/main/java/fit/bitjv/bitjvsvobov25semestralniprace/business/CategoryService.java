@@ -1,8 +1,7 @@
 package fit.bitjv.bitjvsvobov25semestralniprace.business;
 
 import fit.bitjv.bitjvsvobov25semestralniprace.dto.CategoryResponse;
-import fit.bitjv.bitjvsvobov25semestralniprace.dto.CreateCategoryRequest;
-import fit.bitjv.bitjvsvobov25semestralniprace.dto.UpdateCategoryRequest;
+import fit.bitjv.bitjvsvobov25semestralniprace.dto.CategoryRequest;
 import fit.bitjv.bitjvsvobov25semestralniprace.entity.Category;
 import fit.bitjv.bitjvsvobov25semestralniprace.exceptions.CategoryNotFound;
 import fit.bitjv.bitjvsvobov25semestralniprace.repository.CategoryRepository;
@@ -22,17 +21,20 @@ public class CategoryService {
         this.mapper = mapper;
     }
 
-    public CategoryResponse createCategory(CreateCategoryRequest request) {
+    public CategoryResponse createCategory(CategoryRequest request) {
         Category category = mapper.map(request, Category.class);
         categoryRepository.save(category);
         return mapper.map(category, CategoryResponse.class);
     }
 
-    public CategoryResponse updateCategory(UpdateCategoryRequest request) {
-        Category category = mapper.map(request, Category.class);
+    public CategoryResponse updateCategory(CategoryRequest request, Long categoryId) {
         categoryRepository
-                .findById(request.getCategoryId())
+                .findById(categoryId)
                 .orElseThrow(() ->new CategoryNotFound(""));
+
+        Category category = mapper.map(request, Category.class);
+        category.setCategoryId(categoryId);
+
         categoryRepository.save(category);
         return mapper.map(category, CategoryResponse.class);
     }

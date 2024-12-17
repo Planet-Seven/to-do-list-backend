@@ -1,8 +1,7 @@
 package fit.bitjv.bitjvsvobov25semestralniprace.business;
 
-import fit.bitjv.bitjvsvobov25semestralniprace.dto.CreateTaskRequest;
+import fit.bitjv.bitjvsvobov25semestralniprace.dto.TaskRequest;
 import fit.bitjv.bitjvsvobov25semestralniprace.dto.TaskResponse;
-import fit.bitjv.bitjvsvobov25semestralniprace.dto.UpdateTaskRequest;
 import fit.bitjv.bitjvsvobov25semestralniprace.entity.Tag;
 import fit.bitjv.bitjvsvobov25semestralniprace.entity.Task;
 import fit.bitjv.bitjvsvobov25semestralniprace.exceptions.CategoryNotFound;
@@ -38,7 +37,7 @@ public class TaskService {
         this.mapper = mapper;
     }
 
-    public TaskResponse createTask(CreateTaskRequest request) {
+    public TaskResponse createTask(TaskRequest request) {
         Task task = mapper.map(request, Task.class);
         task.setCategory(categoryRepository
                 .findById(request.getCategoryId())
@@ -53,8 +52,14 @@ public class TaskService {
         return mapper.map(task, TaskResponse.class);
     }
 
-    public TaskResponse updateTask(UpdateTaskRequest request) {
+    public TaskResponse updateTask(TaskRequest request, Long taskId) {
+        taskRepository
+                .findById(taskId)
+                .orElseThrow(() ->new TaskNotFound(""));
+
         Task task = mapper.map(request, Task.class);
+        task.setTaskId(taskId);
+
         task.setCategory(categoryRepository
                 .findById(request.getCategoryId())
                 .orElseThrow(() -> new CategoryNotFound("")));
@@ -63,10 +68,6 @@ public class TaskService {
         for (Long id : request.getTagIds())
             tags.add(tagRepository.findById(id).orElseThrow(()-> new TagNotFound("")));
         task.setTags(tags);
-
-        taskRepository
-                .findById(request.getTaskId())
-                .orElseThrow(() -> new TaskNotFound(""));
 
         taskRepository.save(task);
         return mapper.map(task, TaskResponse.class);

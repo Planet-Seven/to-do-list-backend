@@ -1,9 +1,8 @@
 package fit.bitjv.bitjvsvobov25semestralniprace.controllers;
 
 import fit.bitjv.bitjvsvobov25semestralniprace.business.TagService;
-import fit.bitjv.bitjvsvobov25semestralniprace.dto.CreateTagRequest;
+import fit.bitjv.bitjvsvobov25semestralniprace.dto.TagRequest;
 import fit.bitjv.bitjvsvobov25semestralniprace.dto.TagResponse;
-import fit.bitjv.bitjvsvobov25semestralniprace.dto.UpdateTagRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,13 +17,13 @@ public class TagController {
     }
 
     @PostMapping
-    public TagResponse createTag(CreateTagRequest request){
+    public TagResponse createTag(TagRequest request){
         return tagService.createTag(request);
     }
 
-    @PutMapping
-    public TagResponse updateTag(UpdateTagRequest request){
-        return tagService.updateTag(request);
+    @PutMapping("/{tagId}")
+    public TagResponse updateTag(TagRequest request, @PathVariable Long tagId){
+        return tagService.updateTag(request, tagId);
     }
 
     @GetMapping

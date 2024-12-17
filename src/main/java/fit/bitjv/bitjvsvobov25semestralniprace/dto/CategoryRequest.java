@@ -5,6 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CreateTagRequest {
+public class CategoryRequest {
     private String name;
 }

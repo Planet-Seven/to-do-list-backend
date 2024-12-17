@@ -1,11 +1,8 @@
 package fit.bitjv.bitjvsvobov25semestralniprace.business;
 
-import fit.bitjv.bitjvsvobov25semestralniprace.dto.CreateTagRequest;
+import fit.bitjv.bitjvsvobov25semestralniprace.dto.TagRequest;
 import fit.bitjv.bitjvsvobov25semestralniprace.dto.TagResponse;
-import fit.bitjv.bitjvsvobov25semestralniprace.dto.UpdateTagRequest;
-import fit.bitjv.bitjvsvobov25semestralniprace.entity.Category;
 import fit.bitjv.bitjvsvobov25semestralniprace.entity.Tag;
-import fit.bitjv.bitjvsvobov25semestralniprace.exceptions.CategoryNotFound;
 import fit.bitjv.bitjvsvobov25semestralniprace.exceptions.TagNotFound;
 import fit.bitjv.bitjvsvobov25semestralniprace.repository.TagRepository;
 import org.modelmapper.ModelMapper;
@@ -24,17 +21,20 @@ public class TagService {
         this.mapper = mapper;
     }
 
-    public TagResponse createTag(CreateTagRequest request) {
+    public TagResponse createTag(TagRequest request) {
         Tag tag = mapper.map(request, Tag.class);
         tagRepository.save(tag);
         return mapper.map(tag, TagResponse.class);
     }
 
-    public TagResponse updateTag(UpdateTagRequest request) {
-        Tag tag = mapper.map(request, Tag.class);
+    public TagResponse updateTag(TagRequest request, Long tagId) {
         tagRepository
-                .findById(request.getTagId())
+                .findById(tagId)
                 .orElseThrow(() ->new TagNotFound(""));
+
+        Tag tag = mapper.map(request, Tag.class);
+
+        tag.setTagId(tagId);
         tagRepository.save(tag);
         return mapper.map(tag, TagResponse.class);
     }
