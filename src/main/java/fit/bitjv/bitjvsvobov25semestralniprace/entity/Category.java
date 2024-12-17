@@ -17,7 +17,7 @@ public class Category {
     @Column(name="category_id", nullable = false)
     private Long categoryId;
 
-    @Column(name="name")
+    @Column(name="name", nullable = false)
     private String name;
 
     @Override
