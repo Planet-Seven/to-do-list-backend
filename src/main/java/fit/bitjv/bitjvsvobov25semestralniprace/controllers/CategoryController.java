@@ -17,12 +17,13 @@ public class CategoryController {
     }
 
     @PostMapping
-    public CategoryResponse createCategory(CategoryRequest request){
+    public CategoryResponse createCategory(@RequestBody CategoryRequest request){
+        System.out.println(request.getName());
         return categoryService.createCategory(request);
     }
 
     @PutMapping("/{categoryId}")
-    public CategoryResponse updateCategory(CategoryRequest request, @PathVariable Long categoryId) {
+    public CategoryResponse updateCategory(@RequestBody CategoryRequest request, @PathVariable Long categoryId) {
         return categoryService.updateCategory(request, categoryId);
     }
 

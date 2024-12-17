@@ -17,12 +17,12 @@ public class TagController {
     }
 
     @PostMapping
-    public TagResponse createTag(TagRequest request){
+    public TagResponse createTag(@RequestBody TagRequest request){
         return tagService.createTag(request);
     }
 
     @PutMapping("/{tagId}")
-    public TagResponse updateTag(TagRequest request, @PathVariable Long tagId){
+    public TagResponse updateTag(@RequestBody TagRequest request, @PathVariable Long tagId){
         return tagService.updateTag(request, tagId);
     }
 
