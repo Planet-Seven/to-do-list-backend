@@ -74,7 +74,7 @@ public class TaskService {
     }
 
     public TaskResponse getTaskById(Long id) {
-        Task task = taskRepository.findById(id).orElse(null);
+        Task task = taskRepository.findById(id).orElseThrow(()-> new TaskNotFound(""));
         return mapper.map(task, TaskResponse.class);
     }
 
