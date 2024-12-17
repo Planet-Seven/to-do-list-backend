@@ -6,6 +6,7 @@ import fit.bitjv.bitjvsvobov25semestralniprace.entity.Category;
 import fit.bitjv.bitjvsvobov25semestralniprace.exceptions.CategoryNotFound;
 import fit.bitjv.bitjvsvobov25semestralniprace.repository.CategoryRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -57,6 +58,8 @@ public class CategoryService {
         categoryRepository
                 .findById(id)
                 .orElseThrow(() ->new CategoryNotFound(""));
-        categoryRepository.deleteById(id);
+
+        try { categoryRepository.deleteById(id);
+        } catch (DataIntegrityViolationException e) {}
     }
 }

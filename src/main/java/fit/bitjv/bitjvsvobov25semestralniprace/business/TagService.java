@@ -6,6 +6,8 @@ import fit.bitjv.bitjvsvobov25semestralniprace.entity.Tag;
 import fit.bitjv.bitjvsvobov25semestralniprace.exceptions.TagNotFound;
 import fit.bitjv.bitjvsvobov25semestralniprace.repository.TagRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -57,6 +59,8 @@ public class TagService {
         tagRepository
                 .findById(id)
                 .orElseThrow(()-> new TagNotFound(""));
-        tagRepository.deleteById(id);
+        
+        try { tagRepository.deleteById(id);
+        } catch (DataIntegrityViolationException e) {}
     }
 }
