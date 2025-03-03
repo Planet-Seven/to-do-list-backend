@@ -1,12 +1,4 @@
-# BI-TJV-svobov25-semestralni-prace
-
-## Client
-
-todo
-
-## Server
-
-todo
+# Server application for the to-do list app
 
 ## Data model
 
